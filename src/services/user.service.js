@@ -22,6 +22,18 @@ const userService = {
     });
     return users;
   },
+
+  async getUserById(id) {
+    const user = await User.findByPk(id, {
+      attributes: ['id', 'displayName', 'email', 'image'],
+    });
+
+    if (!user) {
+      return { error: 'User does not exist', status: 404 };
+    }
+
+    return { user, status: 200 };
+  },
 };
 
 module.exports = {

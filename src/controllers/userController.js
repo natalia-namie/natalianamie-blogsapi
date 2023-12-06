@@ -20,6 +20,17 @@ const userController = {
       res.status(500).json({ message: 'Internal server error' });
     }
   },
+
+  async getUserById(req, res) {
+    const { id } = req.params;
+    const result = await userService.getUserById(id);
+
+    if (result.error) {
+      return res.status(result.status).json({ message: result.error });
+    }
+
+    return res.status(result.status).json(result.user);
+  },
 };
 
 module.exports = {

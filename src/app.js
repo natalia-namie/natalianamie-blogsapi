@@ -20,6 +20,7 @@ app.post('/login', validateLogin, authController.login);
 app.post('/user', validateUser, userController.createUser);
 
 app.get('/user', authMiddleware, userController.getAllUsers);
+app.get('/user/:id', authMiddleware, userController.getUserById);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
