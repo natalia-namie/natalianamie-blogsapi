@@ -15,6 +15,13 @@ const userService = {
 
     return { token, status: 201 };
   },
+
+  async getAllUsers() {
+    const users = await User.findAll({
+      attributes: ['id', 'displayName', 'email', 'image'],
+    });
+    return users;
+  },
 };
 
 module.exports = {

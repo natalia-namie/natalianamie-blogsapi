@@ -11,6 +11,15 @@ const userController = {
 
     return res.status(result.status).json({ token: result.token });
   },
+
+  async getAllUsers(req, res) {
+    try {
+      const users = await userService.getAllUsers();
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  },
 };
 
 module.exports = {
