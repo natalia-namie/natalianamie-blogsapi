@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const BlogPost = sequelize.define('BlogPost', {
         id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             primaryKey: true,
             autoIncrement: true,
             field: 'id',
@@ -18,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         userId: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: { model: 'users', key: 'id'},
             field: 'user_id',
         },
@@ -32,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
         timestamps: false,
-        tableName: 'BlogPosts',
+        tableName: 'blog_posts',
         underscored: true,
     });
 
