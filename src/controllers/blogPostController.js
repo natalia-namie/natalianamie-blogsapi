@@ -13,6 +13,11 @@ const blogPostController = {
 
     return res.status(result.status).json(result.result);
   },
+
+  async getAllPosts(_req, res) {
+    const posts = await blogPostService.getAllPosts();
+    res.status(200).json(posts);
+  },
 };
 
 module.exports = {

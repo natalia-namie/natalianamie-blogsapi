@@ -10,33 +10,33 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
     await queryInterface.createTable('blog_posts', {
-      blogPostsId: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
         field: 'id',
       },
-      blogPostsTitle: {
+      title: {
         allowNull: false,
         type: Sequelize.TEXT,
         field: 'title',
       },
-      blogPostsContent: {
+      content: {
         allowNull: false,
         type: Sequelize.TEXT,
         field: 'content',
       },
-      blogPostsUserId: {
+      userId: {
         type: Sequelize.INTEGER,
         references: { model: 'users', key: 'id'},
         field: 'user_id',
       },
-      blogPostsPublished: {
+      published: {
         type: Sequelize.DATE,
         field: 'published',
       },
-      blogPostsUpdated: {
+      updated: {
         type: Sequelize.DATE,
         field: 'updated',
       }
