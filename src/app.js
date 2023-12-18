@@ -28,6 +28,7 @@ app.get('/user', authMiddleware, userController.getAllUsers);
 app.get('/user/:id', authMiddleware, userController.getUserById);
 app.get('/categories', authMiddleware, categoryController.getAllCategories);
 app.get('/post', authMiddleware, blogPostController.getAllPosts);
+app.get('/post/:id', authMiddleware, blogPostController.getPostById);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`

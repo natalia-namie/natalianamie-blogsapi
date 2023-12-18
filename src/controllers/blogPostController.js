@@ -18,6 +18,19 @@ const blogPostController = {
     const posts = await blogPostService.getAllPosts();
     res.status(200).json(posts);
   },
+
+  async getPostById(req, res) {
+    try {
+      const { id } = req.params;
+      const post = await blogPostService.getPostById(id);
+      res.status(200).json(post);
+    } catch (error) {
+      if (error.message === 'Post does not exist') {
+        return res.status(404).json({ message: 'Post does not exist' });
+      }
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  },
 };
 
 module.exports = {

@@ -29,12 +29,29 @@ const blogPostService = {
 
   async getAllPosts() {
     const posts = await BlogPost.findAll({
-      include: [{
-        model: User, as: 'user', attributes: ['id', 'displayName', 'email', 'image'] }, {
-        model: Category, as: 'categories', through: { attributes: [] },
-      }],
+      include: [
+        { model: User, as: 'user', attributes: ['id', 'displayName', 'email', 'image'] }, 
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],
     });
     return posts;
+  },
+
+  async getPostById(postId) {
+    const post = await BlogPost.findByPk(postId, {
+      include: [
+        { model: User, as: 'user', attributes: ['id', 'displayName', 'email', 'image'] },
+        { model: Category,
+          as: 'categories',
+          attributes: ['id', 'name'],
+          through: { attributes: [] } },
+      ],
+    });
+
+    if (!post) {
+      throw new Error('Post does not exist');
+    }
+    return post;
   },
 };
 
