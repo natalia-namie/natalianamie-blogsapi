@@ -1,9 +1,11 @@
-const { authController } = require('./authController');
-const { userController } = require('./userController');
-const { blogPostController } = require('./blogPostController');
+const { authController } = require('./auth.controller');
+const { userController } = require('./user.controller');
+const { blogPostController } = require('./blogPost.controller');
+const { updatePostController } = require('./updatePost.controller');
  
 module.exports = {
   authController,
   userController,
   blogPostController,
+  updatePostController,
 };
