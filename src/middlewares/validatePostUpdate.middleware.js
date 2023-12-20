@@ -10,8 +10,8 @@ const validatePostUpdate = async (req, res, next) => {
     return res.status(400).json({ message: 'Some required fields are missing' });
   }
 
-  if (post === null) {
-    return res.status(404).json({ message: 'Not found' });
+  if (!post) {
+    return res.status(404).json({ message: 'Post does not exist' });
   }
 
   if (post.userId !== userId) {

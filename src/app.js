@@ -1,11 +1,13 @@
 const express = require('express');
 const { validateLogin, validateUser,
-  authMiddleware, validateCategory, validatePost, validatePostUpdate } = require('./middlewares');
+  authMiddleware, validateCategory,
+  validatePost, validatePostUpdate, validatePostToDelete } = require('./middlewares');
 const { authController } = require('./controllers/auth.controller');
 const { userController } = require('./controllers/user.controller');
 const { categoryController } = require('./controllers/category.controller');
 const { blogPostController } = require('./controllers/blogPost.controller');
 const { updatePostController } = require('./controllers/updatePost.controller');
+const { deletePostController } = require('./controllers/deletePost.controller');
 
 // ...
 
@@ -32,6 +34,8 @@ app.get('/post', authMiddleware, blogPostController.getAllPosts);
 app.get('/post/:id', authMiddleware, blogPostController.getPostById);
 
 app.put('/post/:id', authMiddleware, validatePostUpdate, updatePostController);
+
+app.delete('/post/:id', authMiddleware, validatePostToDelete, deletePostController);
 
 // É importante exportar a constante `app`,
 // para que possa ser utilizada pelo arquivo `src/server.js`
